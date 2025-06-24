@@ -1,0 +1,40 @@
+[2024-08-21T06:08:12.244+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-21T06:08:12.461+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_22024-08-21.final_etl_processing scheduled__2024-05-19T00:00:00+00:00 [queued]>
+[2024-08-21T06:08:12.534+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_22024-08-21.final_etl_processing scheduled__2024-05-19T00:00:00+00:00 [queued]>
+[2024-08-21T06:08:12.537+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-08-21T06:08:12.873+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): final_etl_processing> on 2024-05-19 00:00:00+00:00
+[2024-08-21T06:08:12.995+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=1179) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-08-21T06:08:13.017+0000] {standard_task_runner.py:63} INFO - Started process 1212 to run task
+[2024-08-21T06:08:13.015+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_22024-08-21', 'final_etl_processing', 'scheduled__2024-05-19T00:00:00+00:00', '--job-id', '204', '--raw', '--subdir', 'DAGS_FOLDER/final_etl.py', '--cfg-path', '/tmp/tmp_xazmw0y']
+[2024-08-21T06:08:13.041+0000] {standard_task_runner.py:91} INFO - Job 204: Subtask final_etl_processing
+[2024-08-21T06:08:13.338+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_22024-08-21.final_etl_processing scheduled__2024-05-19T00:00:00+00:00 [running]> on host 7e1333882d71
+[2024-08-21T06:08:14.143+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_22024-08-21' AIRFLOW_CTX_TASK_ID='final_etl_processing' AIRFLOW_CTX_EXECUTION_DATE='2024-05-19T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-05-19T00:00:00+00:00'
+[2024-08-21T06:08:14.148+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-08-21T06:08:14.313+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-08-21T06:08:14.338+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', "python3 /opt/***/data/etl_m12.py --connection postgresql+psycopg2://***:***@postgres/postgres --csv ''"]
+[2024-08-21T06:08:14.413+0000] {subprocess.py:86} INFO - Output:
+[2024-08-21T06:08:22.541+0000] {subprocess.py:93} INFO - /opt/***/data/etl_m12.py:23: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+[2024-08-21T06:08:22.718+0000] {subprocess.py:93} INFO -   Base = declarative_base()
+[2024-08-21T06:08:22.929+0000] {subprocess.py:93} INFO - ERROR:root:Error fetching data from API: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /getData (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff6c18e9f0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2024-08-21T06:08:22.942+0000] {subprocess.py:93} INFO - ERROR:__main__:No decrypted data found.
+[2024-08-21T06:08:27.504+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2024-08-21T06:08:27.644+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-08-21T06:08:27.820+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2024-08-21T06:08:27.853+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=etl_22024-08-21, task_id=final_etl_processing, run_id=scheduled__2024-05-19T00:00:00+00:00, execution_date=20240519T000000, start_date=20240821T060812, end_date=20240821T060827
+[2024-08-21T06:08:27.962+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 204 for task final_etl_processing (Bash command failed. The command returned a non-zero exit code 1.; 1212)
+[2024-08-21T06:08:28.052+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-08-21T06:08:28.235+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-21T06:08:28.244+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

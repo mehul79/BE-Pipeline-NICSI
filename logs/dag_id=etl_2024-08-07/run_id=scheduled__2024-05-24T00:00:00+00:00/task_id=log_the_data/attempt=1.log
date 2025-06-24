@@ -1,0 +1,40 @@
+[2024-08-07T10:48:58.512+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-07T10:48:58.543+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_2024-08-07.log_the_data scheduled__2024-05-24T00:00:00+00:00 [queued]>
+[2024-08-07T10:48:58.548+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_2024-08-07.log_the_data scheduled__2024-05-24T00:00:00+00:00 [queued]>
+[2024-08-07T10:48:58.548+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-08-07T10:48:58.573+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): log_the_data> on 2024-05-24 00:00:00+00:00
+[2024-08-07T10:48:58.578+0000] {standard_task_runner.py:63} INFO - Started process 2251 to run task
+[2024-08-07T10:48:58.581+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_2024-08-07', 'log_the_data', 'scheduled__2024-05-24T00:00:00+00:00', '--job-id', '236', '--raw', '--subdir', 'DAGS_FOLDER/final_etl.py', '--cfg-path', '/tmp/tmpwgabi8qa']
+[2024-08-07T10:48:58.584+0000] {standard_task_runner.py:91} INFO - Job 236: Subtask log_the_data
+[2024-08-07T10:48:58.639+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_2024-08-07.log_the_data scheduled__2024-05-24T00:00:00+00:00 [running]> on host 8cffaad11d99
+[2024-08-07T10:48:58.738+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_2024-08-07' AIRFLOW_CTX_TASK_ID='log_the_data' AIRFLOW_CTX_EXECUTION_DATE='2024-05-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-05-24T00:00:00+00:00'
+[2024-08-07T10:48:58.739+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-08-07T10:48:58.753+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-08-07T10:48:58.754+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python3 /opt/***/data/logging_config.py']
+[2024-08-07T10:48:58.762+0000] {subprocess.py:86} INFO - Output:
+[2024-08-07T10:48:58.851+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-08-07T10:48:58.851+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-08-07T10:48:58.900+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_2024-08-07, task_id=log_the_data, run_id=scheduled__2024-05-24T00:00:00+00:00, execution_date=20240524T000000, start_date=20240807T104858, end_date=20240807T104858
+[2024-08-07T10:48:58.954+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-08-07T10:48:58.973+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-08-07T10:48:59.103+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-08-07T10:55:09.644+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-07T10:55:09.661+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_2024-08-07.log_the_data scheduled__2024-05-24T00:00:00+00:00 [queued]>
+[2024-08-07T10:55:09.665+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_2024-08-07.log_the_data scheduled__2024-05-24T00:00:00+00:00 [queued]>
+[2024-08-07T10:55:09.665+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-08-07T10:55:10.055+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): log_the_data> on 2024-05-24 00:00:00+00:00
+[2024-08-07T10:55:10.063+0000] {standard_task_runner.py:63} INFO - Started process 3050 to run task
+[2024-08-07T10:55:10.065+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_2024-08-07', 'log_the_data', 'scheduled__2024-05-24T00:00:00+00:00', '--job-id', '453', '--raw', '--subdir', 'DAGS_FOLDER/final_etl.py', '--cfg-path', '/tmp/tmp9xp1kg9_']
+[2024-08-07T10:55:10.067+0000] {standard_task_runner.py:91} INFO - Job 453: Subtask log_the_data
+[2024-08-07T10:55:10.566+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_2024-08-07.log_the_data scheduled__2024-05-24T00:00:00+00:00 [running]> on host 8cffaad11d99
+[2024-08-07T10:55:10.671+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_2024-08-07' AIRFLOW_CTX_TASK_ID='log_the_data' AIRFLOW_CTX_EXECUTION_DATE='2024-05-24T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-05-24T00:00:00+00:00'
+[2024-08-07T10:55:10.672+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-08-07T10:55:10.685+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-08-07T10:55:10.686+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python3 /opt/***/data/logging_config.py']
+[2024-08-07T10:55:10.693+0000] {subprocess.py:86} INFO - Output:
+[2024-08-07T10:55:10.773+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-08-07T10:55:10.773+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-08-07T10:55:10.821+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_2024-08-07, task_id=log_the_data, run_id=scheduled__2024-05-24T00:00:00+00:00, execution_date=20240524T000000, start_date=20240807T105509, end_date=20240807T105510
+[2024-08-07T10:55:10.881+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-08-07T10:55:10.910+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-08-07T10:55:10.953+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

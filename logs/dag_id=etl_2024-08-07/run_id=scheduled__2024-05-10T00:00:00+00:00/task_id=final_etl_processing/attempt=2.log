@@ -1,0 +1,132 @@
+[2024-08-07T10:48:44.645+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-07T10:48:44.665+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_2024-08-07.final_etl_processing scheduled__2024-05-10T00:00:00+00:00 [queued]>
+[2024-08-07T10:48:44.669+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_2024-08-07.final_etl_processing scheduled__2024-05-10T00:00:00+00:00 [queued]>
+[2024-08-07T10:48:44.669+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-08-07T10:48:44.698+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): final_etl_processing> on 2024-05-10 00:00:00+00:00
+[2024-08-07T10:48:44.701+0000] {standard_task_runner.py:63} INFO - Started process 2171 to run task
+[2024-08-07T10:48:44.705+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_2024-08-07', 'final_etl_processing', 'scheduled__2024-05-10T00:00:00+00:00', '--job-id', '205', '--raw', '--subdir', 'DAGS_FOLDER/final_etl.py', '--cfg-path', '/tmp/tmpek8n3g7k']
+[2024-08-07T10:48:44.707+0000] {standard_task_runner.py:91} INFO - Job 205: Subtask final_etl_processing
+[2024-08-07T10:48:44.784+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_2024-08-07.final_etl_processing scheduled__2024-05-10T00:00:00+00:00 [running]> on host 8cffaad11d99
+[2024-08-07T10:48:44.858+0000] {abstractoperator.py:725} ERROR - Exception rendering Jinja template for task 'final_etl_processing', field 'bash_command'. Template: "python3 /opt/***/data/etl_m12.py --connection {{ var.value.data_dev_connection }} --csv '{{ task_instance.xcom_pull(task_ids='fetch_the_api') }}'"
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/abstractoperator.py", line 717, in _do_render_template_fields
+    rendered_content = self.render_template(
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/template/templater.py", line 169, in render_template
+    return self._render(template, context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/abstractoperator.py", line 675, in _render
+    return super()._render(template, context, dag=dag)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/template/templater.py", line 126, in _render
+    return render_template_to_string(template, context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/helpers.py", line 289, in render_template_to_string
+    return render_template(template, cast(MutableMapping[str, Any], context), native=False)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/helpers.py", line 284, in render_template
+    return "".join(nodes)
+  File "<template>", line 14, in root
+  File "/home/airflow/.local/lib/python3.9/site-packages/jinja2/sandbox.py", line 327, in getattr
+    value = getattr(obj, attribute)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/context.py", line 110, in __getattr__
+    self.var = Variable.get(key, deserialize_json=self._deserialize_json)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/variable.py", line 143, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable data_dev_connection does not exist'
+[2024-08-07T10:48:44.860+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 2479, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 2633, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context, jinja_env=jinja_env)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 3094, in render_templates
+    original_task.render_template_fields(context, jinja_env)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 1337, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/abstractoperator.py", line 717, in _do_render_template_fields
+    rendered_content = self.render_template(
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/template/templater.py", line 169, in render_template
+    return self._render(template, context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/abstractoperator.py", line 675, in _render
+    return super()._render(template, context, dag=dag)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/template/templater.py", line 126, in _render
+    return render_template_to_string(template, context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/helpers.py", line 289, in render_template_to_string
+    return render_template(template, cast(MutableMapping[str, Any], context), native=False)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/helpers.py", line 284, in render_template
+    return "".join(nodes)
+  File "<template>", line 14, in root
+  File "/home/airflow/.local/lib/python3.9/site-packages/jinja2/sandbox.py", line 327, in getattr
+    value = getattr(obj, attribute)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/context.py", line 110, in __getattr__
+    self.var = Variable.get(key, deserialize_json=self._deserialize_json)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/variable.py", line 143, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable data_dev_connection does not exist'
+[2024-08-07T10:48:44.869+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=etl_2024-08-07, task_id=final_etl_processing, run_id=scheduled__2024-05-10T00:00:00+00:00, execution_date=20240510T000000, start_date=20240807T104844, end_date=20240807T104844
+[2024-08-07T10:48:44.897+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 205 for task final_etl_processing ('Variable data_dev_connection does not exist'; 2171)
+[2024-08-07T10:48:44.916+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-08-07T10:48:44.927+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-07T10:48:44.944+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-08-07T10:54:51.994+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-07T10:54:52.015+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_2024-08-07.final_etl_processing scheduled__2024-05-10T00:00:00+00:00 [queued]>
+[2024-08-07T10:54:52.021+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_2024-08-07.final_etl_processing scheduled__2024-05-10T00:00:00+00:00 [queued]>
+[2024-08-07T10:54:52.021+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-08-07T10:54:52.055+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): final_etl_processing> on 2024-05-10 00:00:00+00:00
+[2024-08-07T10:54:52.059+0000] {standard_task_runner.py:63} INFO - Started process 2946 to run task
+[2024-08-07T10:54:52.061+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_2024-08-07', 'final_etl_processing', 'scheduled__2024-05-10T00:00:00+00:00', '--job-id', '411', '--raw', '--subdir', 'DAGS_FOLDER/final_etl.py', '--cfg-path', '/tmp/tmpkr3my5f1']
+[2024-08-07T10:54:52.062+0000] {standard_task_runner.py:91} INFO - Job 411: Subtask final_etl_processing
+[2024-08-07T10:54:52.122+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_2024-08-07.final_etl_processing scheduled__2024-05-10T00:00:00+00:00 [running]> on host 8cffaad11d99
+[2024-08-07T10:54:52.179+0000] {abstractoperator.py:725} ERROR - Exception rendering Jinja template for task 'final_etl_processing', field 'bash_command'. Template: "python3 /opt/***/data/etl_m12.py --connection {{ var.value.data_dev_connection }} --csv '{{ task_instance.xcom_pull(task_ids='fetch_the_api') }}'"
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/abstractoperator.py", line 717, in _do_render_template_fields
+    rendered_content = self.render_template(
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/template/templater.py", line 169, in render_template
+    return self._render(template, context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/abstractoperator.py", line 675, in _render
+    return super()._render(template, context, dag=dag)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/template/templater.py", line 126, in _render
+    return render_template_to_string(template, context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/helpers.py", line 289, in render_template_to_string
+    return render_template(template, cast(MutableMapping[str, Any], context), native=False)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/helpers.py", line 284, in render_template
+    return "".join(nodes)
+  File "<template>", line 14, in root
+  File "/home/airflow/.local/lib/python3.9/site-packages/jinja2/sandbox.py", line 327, in getattr
+    value = getattr(obj, attribute)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/context.py", line 110, in __getattr__
+    self.var = Variable.get(key, deserialize_json=self._deserialize_json)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/variable.py", line 143, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable data_dev_connection does not exist'
+[2024-08-07T10:54:52.180+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 2479, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 2633, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context, jinja_env=jinja_env)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 3094, in render_templates
+    original_task.render_template_fields(context, jinja_env)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/baseoperator.py", line 1337, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/abstractoperator.py", line 717, in _do_render_template_fields
+    rendered_content = self.render_template(
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/template/templater.py", line 169, in render_template
+    return self._render(template, context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/abstractoperator.py", line 675, in _render
+    return super()._render(template, context, dag=dag)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/template/templater.py", line 126, in _render
+    return render_template_to_string(template, context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/helpers.py", line 289, in render_template_to_string
+    return render_template(template, cast(MutableMapping[str, Any], context), native=False)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/helpers.py", line 284, in render_template
+    return "".join(nodes)
+  File "<template>", line 14, in root
+  File "/home/airflow/.local/lib/python3.9/site-packages/jinja2/sandbox.py", line 327, in getattr
+    value = getattr(obj, attribute)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/utils/context.py", line 110, in __getattr__
+    self.var = Variable.get(key, deserialize_json=self._deserialize_json)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/variable.py", line 143, in get
+    raise KeyError(f"Variable {key} does not exist")
+KeyError: 'Variable data_dev_connection does not exist'
+[2024-08-07T10:54:52.185+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=etl_2024-08-07, task_id=final_etl_processing, run_id=scheduled__2024-05-10T00:00:00+00:00, execution_date=20240510T000000, start_date=20240807T105452, end_date=20240807T105452
+[2024-08-07T10:54:52.211+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 411 for task final_etl_processing ('Variable data_dev_connection does not exist'; 2946)
+[2024-08-07T10:54:52.234+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-08-07T10:54:52.244+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-07T10:54:52.263+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

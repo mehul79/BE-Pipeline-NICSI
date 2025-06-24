@@ -1,0 +1,100 @@
+docker-compose workflow
+
+
+cd /home/dev2/Sumit
+#install docker latest version
+step 1) 
+    sudo apt-get update
+step 2) 
+    sudo apt-get install ca-certificates curl gnupg lsb-release
+step 3) 
+    sudo mkdir -m 0755 -p /etc/apt/keyrings
+step 4)
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/docker.gpg
+step 5) 
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+step 6)
+     sudo apt-get update
+step 7)
+     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin
+step 8)
+     docker-compose-plugin
+step 9)
+     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+#download compose
+step 10) 
+    docker run --rm debian:bullseye-slim bash -c 'numfmt --to=iec $(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE)))'
+#download compose file
+step 11) 
+    curl -LfO https://airflow.apache.org/docs/apache-airflow/2.5.1/docker-compose.yaml
+#etting the right Airflow user
+step 12) 
+    mkdir -p ./dags ./logs ./plugins
+step 13) 
+    echo -e “AIRFLOW_UID=$(id -u)” > .env              #AIRFLOW_UID=50000/10000-> remove ""
+#Initialize the database
+step 14) 
+    docker compose up airflow-init
+#Run Airflow
+step 15) 
+    docker compose up -d
+#open in browser
+step 16) localhost:8080
+step 17) usename: airflow
+         password: airflow
+         
+         
+#pip install -r /requirements.txt
+#./requiremennts.txt:/requirements.txt
+
+
+
+
+
+#AIRFLOW
+variable --> key -->  data_dev_connection
+	 --> des --> postgresql+psycopg2://airflow:airflow@postgres/postgres
+	 
+airflow connection 
+	 
+connections --> Connection Id--> postgres_localhost
+  	    --> Connection Type --> postgres
+	    --> Host --> host.docker.internal
+	    --> Database --> postgres
+	    --> Login --> airflow
+	    --> port --> 5434
+	    
+	  
+Db Connection
+Genereal  -- > Name : any
+Connection --> Host Name : host.docker.internal
+port -- > 5434
+database maintance --> postgres
+username -- > airflow
+password --> airflow
+
+
+
+
+
+
+
+
+############################## DB Connection ###############################
+DB CREATE --> airflow_tutorials any
+schemas created --> airflow  any 
+
+then all query execute
+
+create user my_airflow_user with password 'my_airflow';
+grant all PRIVILEGES on database airflow_tutorials to my_airflow_user;
+grant all PRIVILEGES on schema airflow to my_airflow_user;
+
+
+airflow.cfg
+
+# sql_alchemy_conn = postgresql+psycopg2:my_airflow_user@my_airflow@localhost/airflow_tutorials
+# sql_alchemy_conn = postgresql+psycopg2:username@password@localhost ya ip /db_name
+
+# sql_alchemy_schema = airflow
+# sql_alchemy_schema = schema_name
