@@ -249,14 +249,7 @@ AIRFLOW_WWW_USER_PASSWORD=mehul
 
 ## 🤝 Contributing
 
-We welcome contributions including:
-
-- 🐛 Bug reports & feature requests  
-- ⚡ Code improvements  
-- 🧪 Tests & validation  
-- 📝 Documentation updates  
-- 🚀 Performance optimizations  
-
+We welcome contributions:
 Submit PRs or open issues to contribute!
 
 ---
