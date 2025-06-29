@@ -105,9 +105,9 @@ docker-compose up -d
 
 3. **Access Interfaces**
 
-- Airflow UI: [http://localhost:8080](http://localhost:8080) (user: `mehul`, pass: `mehul`)  
+- Airflow UI: [http://localhost:8080](http://localhost:8080) (user: `airflow`, pass: `airflow`)  
 - Flask API: [http://localhost:5001](http://localhost:5001)  
-- pgAdmin: [http://localhost:15432](http://localhost:15432) (email: `rahul2222@gmail.com`, pass: `postgres`)  
+- pgAdmin: [http://localhost:15432](http://localhost:15432) (email: `m@g.com`, pass: `postgres`)  
 - PostgreSQL: `localhost:5434`  
 
 4. **Initialize DAGs**
