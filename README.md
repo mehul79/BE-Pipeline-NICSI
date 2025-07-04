@@ -37,7 +37,7 @@ Key features:
 - Real-time data processing  
 - Token-based authentication  
 
-### 🗄️ Database Layer (PostgreSQL + SQLAlchemy)
+### 🗄️ Database Layer (PostgreSQL + PgAdmin)
 
 - Dynamic table creation (date-based naming)  
 - Structured logs with timestamps  
